@@ -27,5 +27,3 @@ jane-austen-chatbot/
     │   └── chapter_1.txt
     └── letters/
         └── letters_chapter_i.txt 
-
-## ⚙️ **Installation and Setup**
