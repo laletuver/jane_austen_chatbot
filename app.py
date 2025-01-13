@@ -7,32 +7,14 @@ import os
 import base64 
 
 
-def set_bg_from_local(image_file: str):
-    with open(image_file, "rb") as f:
-        data = f.read()
-    encoded = base64.b64encode(data).decode()
-    page_bg_img = f"""
-    <style>
-    [data-testid="stAppViewContainer"] {{
-        background-image: url("data:image/png;base64,{encoded}");
-        background-size: cover;
-        background-repeat: no-repeat;
-    }}
-    </style> 
-    """
-    
-    st.markdown(page_bg_img, unsafe_allow_html=True)
-
-# Set your background (update path if needed)
-
 # Sidebar for OpenAI API key
 with st.sidebar:
     st.header("🔑 Enter OpenAI API Key")
     openai_api_key = st.text_input("API Key", type="password", key="open_api_key")
 
     if st.button("Clear API Key"):
-        st.session_state["open_api_key"] = ""  # Clear the key and reset input
-        st.experimental_rerun()  # Restart the app without refreshing the page
+        st.session_state.clear()  
+        st.experimental_rerun()  
 
  
 # Validate API key
