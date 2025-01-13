@@ -24,7 +24,7 @@ def set_bg_from_local(image_file: str):
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # Set your background (update path if needed)
-set_bg_from_local("images/floral_background_1.png")
+set_bg_from_local("images/floral_background.png")
 
 # Sidebar for OpenAI API key
 with st.sidebar:
@@ -155,15 +155,14 @@ chat_engine = vectorstoreindex.as_chat_engine(
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "My dear friend, I stand ready to converse on any matter you wish!"}]
 
-theme_mode = st.get_option("theme.base")  # Get current theme (light or dark mode)
-text_color = "white" if theme_mode == "dark" else "black"  # Set text color based on theme
-
+# Display chat history
 for msg in st.session_state["messages"]:
-    role_label = "You" if msg["role"] == "user" else "Jane Austen"
-    st.markdown(
-        f"<p style='color:{text_color}; font-size:16px;'><strong>{role_label}:</strong> {msg['content']}</p>",
-        unsafe_allow_html=True
-    )
+    if msg["role"] == "assistant":
+        # Use a quill for the assistant
+        st.chat_message("assistant", avatar="🖋").write(msg["content"])
+    else:
+        # Use a speech bubble for the user
+        st.chat_message("user", avatar="🗣").write(msg["content"])
 
 # User message input
 if prompt := st.chat_input("Your message..."):
