@@ -24,7 +24,6 @@ def set_bg_from_local(image_file: str):
     st.markdown(page_bg_img, unsafe_allow_html=True)
 
 # Set your background (update path if needed)
-set_bg_from_local("images/floral_background.jpg")
 
 # Sidebar for OpenAI API key
 with st.sidebar:
