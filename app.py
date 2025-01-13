@@ -154,14 +154,16 @@ chat_engine = vectorstoreindex.as_chat_engine(
 # Initialize chat session
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "My dear friend, I stand ready to converse on any matter you wish!"}]
-# Display chat history
+
+theme_mode = st.get_option("theme.base")  # Get current theme (light or dark mode)
+text_color = "white" if theme_mode == "dark" else "black"  # Set text color based on theme
+
 for msg in st.session_state["messages"]:
-    if msg["role"] == "assistant":
-        # Use a quill for the assistant
-        st.chat_message("assistant", avatar="🖋").write(msg["content"])
-    else:
-        # Use a speech bubble for the user
-        st.chat_message("user", avatar="🗣").write(msg["content"])
+    role_label = "You" if msg["role"] == "user" else "Jane Austen"
+    st.markdown(
+        f"<p style='color:{text_color}; font-size:16px;'><strong>{role_label}:</strong> {msg['content']}</p>",
+        unsafe_allow_html=True
+    )
 
 # User message input
 if prompt := st.chat_input("Your message..."):
