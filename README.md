@@ -2,7 +2,7 @@
 
 Welcome to the **Jane Austen Chatbot**. It is a **Streamlit-based application** that allows you to have a conversation with Jane Austen. This chatbot generates Jane Austen's responses in her  **Regency-era tone** using OpenAI’s GPT models and references her writings, life and letters.
 
-https://janeaustenchatbot.streamlit.app
+[jane austen chatbot](https://janeaustenchatbot.streamlit.app)
 
 ---
 
