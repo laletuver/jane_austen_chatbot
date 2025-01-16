@@ -22,10 +22,10 @@ with st.sidebar:
         st.experimental_rerun()  
 
  
-# Validate API key
-if not openai_api_key or openai_api_key.strip() == "":
-    st.error("❌ Please enter your OpenAI API key to continue.")
-    st.stop()
+    # Validate API key
+    if not openai_api_key or openai_api_key.strip() == "":
+        st.error("❌ Please enter your OpenAI API key to continue.")
+        st.stop()
 
 openai.api_key = openai_api_key
 st.success("✅ API Key successfully set!")
