@@ -14,7 +14,7 @@ with st.sidebar:
 
     if st.button("Clear API Key"):
         st.session_state["open_api_key"] = "" 
-        st.experimental_rerun()  
+       # st.experimental_rerun()  
 
  
 # Validate API key
