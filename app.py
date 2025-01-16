@@ -15,19 +15,20 @@ with st.sidebar:
     if "open_api_key" not in st.session_state:
         st.session_state.open_api_key = ""
     
-    openai_api_key = st.text_input("API Key", type="password", key="open_api_key")
+    user_api_key = st.text_input("API Key", type="password")
+
+    if user_api_key:
+        st.session_state["openai_api_key"] = user_api_key
 
     if st.button("Clear API Key"):
         st.session_state["open_api_key"] = "" 
         st.experimental_rerun()  
 
- 
-    # Validate API key
-    if not openai_api_key or openai_api_key.strip() == "":
-        st.error("❌ Please enter your OpenAI API key to continue.")
-        st.stop()
+if not st.session_state["openai_api_key"]:
+    st.error("❌ Please enter your OpenAI API key to continue.")
+    st.stop(
 
-openai.api_key = openai_api_key
+openai.api_key = st.session_state["openai_api_key"]
 st.success("✅ API Key successfully set!")
 
 
