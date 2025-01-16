@@ -12,37 +12,37 @@ import streamlit as st
 import openai
 
 # Sidebar for API key input
+import streamlit as st
+import openai
+
+# Sidebar for API key input
 with st.sidebar:
-    st.header("🔑 Enter OpenAI API Key")
+    st.header("🔑 Enter Your OpenAI API Key")
 
-    # Ensure session state has a placeholder for the API key
-    if "openai_api_key" not in st.session_state:
-        st.session_state["openai_api_key"] = ""
-
-    # Input field for user API key
+    # Text input for API key
     user_api_key = st.text_input("API Key", type="password")
 
-    # Save API key in session state when entered
+    # Store API key in session state
     if user_api_key:
         st.session_state["openai_api_key"] = user_api_key
 
-    # Button to clear API key
+    # Clear API Key button
     if st.button("Clear API Key"):
-        st.session_state["openai_api_key"] = ""  # Reset session state
+        st.session_state["openai_api_key"] = ""  # Reset session
         st.experimental_rerun()  # Refresh the app
 
-# Retrieve API key from session state
-openai_api_key = st.session_state["openai_api_key"]
+# Retrieve API key
+openai_api_key = st.session_state.get("openai_api_key", "")
 
 # **Validate API key**
 if not openai_api_key:
     st.error("❌ Please enter your OpenAI API key to continue.")
-    st.stop()  # Stops execution until a valid API key is provided
+    st.stop()
 
 # Set OpenAI API Key
 openai.api_key = openai_api_key
-
 st.success("✅ API Key successfully set! You can now use the chatbot.")
+
 
 
 
