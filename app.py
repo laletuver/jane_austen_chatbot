@@ -26,7 +26,7 @@ with st.sidebar:
 
 if not st.session_state["openai_api_key"]:
     st.error("❌ Please enter your OpenAI API key to continue.")
-    st.stop(
+    st.stop()
 
 openai.api_key = st.session_state["openai_api_key"]
 st.success("✅ API Key successfully set!")
