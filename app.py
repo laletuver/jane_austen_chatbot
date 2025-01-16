@@ -13,16 +13,17 @@ with st.sidebar:
     openai_api_key = st.text_input("API Key", type="password", key="open_api_key")
 
     if st.button("Clear API Key"):
-        st.session_state.clear()  
+        st.session_state["open_api_key"] = "" 
         st.experimental_rerun()  
 
  
 # Validate API key
-if if openai_api_key.strip() == "":
-    st.warning("Please enter your OpenAI API key to continue.")
+if not openai_api_key or openai_api_key.strip() == "":
+    st.error("❌ Please enter your OpenAI API key to continue.")
     st.stop()
 
 openai.api_key = openai_api_key
+st.success("✅ API Key successfully set!")
 
 
 st.title("📜Jane Austen Chatbot")
