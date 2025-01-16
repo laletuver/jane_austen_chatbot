@@ -18,7 +18,7 @@ with st.sidebar:
 
  
 # Validate API key
-if not openai_api_key:
+if if openai_api_key.strip() == "":
     st.warning("Please enter your OpenAI API key to continue.")
     st.stop()
 
