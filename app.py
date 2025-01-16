@@ -10,11 +10,16 @@ import base64
 # Sidebar for OpenAI API key
 with st.sidebar:
     st.header("🔑 Enter OpenAI API Key")
+   
+
+    if "open_api_key" not in st.session_state:
+        st.session_state.open_api_key = ""
+    
     openai_api_key = st.text_input("API Key", type="password", key="open_api_key")
 
     if st.button("Clear API Key"):
         st.session_state["open_api_key"] = "" 
-       # st.experimental_rerun()  
+        st.experimental_rerun()  
 
  
 # Validate API key
