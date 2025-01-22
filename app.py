@@ -7,10 +7,6 @@ import os
 import base64 
 
 
-# Sidebar for OpenAI API key
-import streamlit as st
-import openai
-
 # Sidebar for API key input
 import streamlit as st
 import openai
